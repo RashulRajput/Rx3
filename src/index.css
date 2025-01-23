@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+  }
+
+  :root[class~="dark"] {
+    --background: 15 23 42;
+    --foreground: 255 255 255;
+  }
+
+  body {
+    @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
+  }
+}
+
+@layer components {
+  .royal-card {
+    @apply relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 
+           border border-purple-500/20 rounded-xl shadow-xl
+           backdrop-blur-sm transition-all duration-300
+           hover:shadow-purple-500/10 hover:-translate-y-1
+           before:absolute before:inset-0
+           before:bg-gradient-to-r before:from-purple-500/10 before:to-indigo-500/10
+           before:rounded-xl before:opacity-0 before:transition-opacity
+           hover:before:opacity-100
+           dark:from-gray-900 dark:to-gray-800;
+  }
+
+  .royal-button {
+    @apply px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600
+           text-white rounded-lg shadow-lg transform transition-all
+           hover:shadow-purple-500/50 hover:-translate-y-0.5 hover:scale-105
+           active:scale-95;
+  }
+
+  .royal-input {
+    @apply w-full pl-10 pr-4 py-3 bg-gray-900/50 border border-purple-500/30
+           text-white rounded-xl shadow-inner backdrop-blur-sm
+           focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500
+           placeholder:text-gray-400 transition-all duration-300
+           dark:bg-gray-900/80;
+  }
+
+  .royal-heading {
+    @apply relative inline-block;
+    text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+  }
+
+  .royal-heading::after {
+    @apply content-[''] absolute -bottom-2 left-0 w-full h-0.5
+           bg-gradient-to-r from-purple-500 to-indigo-500
+           transform scale-x-0 transition-transform duration-300;
+  }
+
+  .royal-heading:hover::after {
+    @apply scale-x-100;
+  }
+}
